@@ -1,6 +1,4 @@
-package ru.stqa.pft.bn;
-
-import ru.stqa.pft.bn.Point;
+package ru.stqa.pft.sandbox;
 
 /**
  * Created by plopik on 21.11.2016.
@@ -13,7 +11,7 @@ public class PrintDistance {
     Point p2 = new Point(8,1);
 
 
-    System.out.println("Distance between 2 points is equally to " + distance(p1,p2));
+    System.out.println("Distance between 2 points: " + "x1 = " + p1.x + " y1 = " + p1.y + " and "  + " x2 = " + p2.x + " y2 = " + p2.y + " is equally to " + distance(p1,p2));
   }
 
 

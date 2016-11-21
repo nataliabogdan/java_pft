@@ -1,4 +1,4 @@
-package ru.stqa.pft.bn;
+package ru.stqa.pft.sandbox;
 
 /**
  * Created by plopik on 21.11.2016.
