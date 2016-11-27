@@ -1,4 +1,4 @@
-package ru.stqa.plopik.sandbox;
+package plopik.sandbox;
 
 /**
  * Created by plopik on 21.11.2016.
