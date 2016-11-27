@@ -35,10 +35,10 @@ public class ContactCreationTests {
     initContactCreation();
     fillContactForm(new ContactData("Natalia", "Bogdan", "Minsk\nPritytskogo str 45 - 84", "+375296847584", "n.bogdan@gmail.com"));
     submit();
-    returnToHomePage();
+    gotoHomePage();
   }
 
-  private void returnToHomePage() {
+  private void gotoHomePage() {
     wd.findElement(By.linkText("home page")).click();
   }
 
