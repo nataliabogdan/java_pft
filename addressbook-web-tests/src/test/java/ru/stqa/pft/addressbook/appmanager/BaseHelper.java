@@ -26,6 +26,8 @@ public class BaseHelper {
     wd.findElement(locator).sendKeys(text);
   }
 
+
+
   public boolean isAlertPresent() {
     try {
       wd.switchTo().alert();
