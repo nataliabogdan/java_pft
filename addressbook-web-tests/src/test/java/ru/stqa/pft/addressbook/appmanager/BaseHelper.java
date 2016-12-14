@@ -22,8 +22,10 @@ public class BaseHelper {
 
   protected void type(By locator, String text) {
     WebElement element = findElement(locator);
-    element.clear();
-    element.sendKeys(text);
+    if (text != null) {
+      element.clear();
+      element.sendKeys(text);
+    }
   }
 
   private WebElement findElement(By locator) {
