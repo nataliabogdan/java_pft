@@ -5,6 +5,10 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+
+import java.util.NoSuchElementException;
 
 /**
  * Created by plopik on 30.11.2016.
@@ -31,7 +35,15 @@ public class BaseHelper {
     }
   }
 
-  private WebElement findElement(By locator) {
+  protected void select(By locator, String value){
+    if (isElementPresent(locator)) {
+      WebElement element = findElement(locator);
+      Select select = new Select(element);
+      select.selectByVisibleText(value);
+    }
+  }
+
+  protected WebElement findElement(By locator) {
     return wd.findElement(locator);
   }
 
@@ -47,5 +59,18 @@ public class BaseHelper {
     } catch (NoAlertPresentException e) {
       return false;
     }
+  }
+
+  protected boolean isElementPresent(By locator) {
+    try {
+      wd.findElement(locator);
+      return true;
+    } catch (NoSuchElementException ex) {
+      return false;
+    }
+  }
+
+  protected void checkElementNotPresent(By locator) {
+    Assert.assertFalse(isElementPresent(By.name("new_group")));
   }
 }
