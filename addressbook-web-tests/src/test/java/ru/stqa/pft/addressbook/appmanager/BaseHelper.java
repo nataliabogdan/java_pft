@@ -11,6 +11,7 @@ import org.testng.Assert;
  * Created by plopik on 30.11.2016.
  */
 public class BaseHelper {
+  //public WebDriver wd;
   private WebDriver wd;
 
   public BaseHelper(WebDriver wd) {
@@ -69,5 +70,14 @@ public class BaseHelper {
 
   protected void checkElementNotPresent(By locator) {
     Assert.assertFalse(isElementPresent(By.name("new_group")));
+  }
+
+  protected boolean isTextPresent(By locator, String text) {
+    try {
+      wd.findElement(locator).getText().equals(text);
+      return true;
+    } catch (NoSuchElementException ex){
+      return false;
+    }
   }
 }
