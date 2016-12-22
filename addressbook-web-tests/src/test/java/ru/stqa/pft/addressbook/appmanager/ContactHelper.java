@@ -60,4 +60,15 @@ public class ContactHelper extends BaseHelper {
     click(By.cssSelector("input[value='Delete']"));
     alertAccept();
   }
+
+  public void createContact(ContactData contactData, boolean b) {
+    initContactCreation();
+    fillContactForm(contactData, b);
+    submitContactCreation();
+    returnToHomePage();
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
+  }
 }
