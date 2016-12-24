@@ -5,14 +5,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
+import java.util.List;
 
 
 /**
  * Created by plopik on 30.11.2016.
  */
 public class BaseHelper {
-  public WebDriver wd;
-  //private WebDriver wd;
+  //public WebDriver wd;
+  private WebDriver wd;
 
   public BaseHelper(WebDriver wd) {
     this.wd = wd;
@@ -69,7 +70,7 @@ public class BaseHelper {
   }
 
   protected void checkElementNotPresent(By locator) {
-    Assert.assertFalse(isElementPresent(By.name("new_group")));
+    Assert.assertFalse(isElementPresent(locator));
   }
 
   protected boolean isTextPresent(By locator, String text) {
@@ -79,5 +80,17 @@ public class BaseHelper {
     } catch (NoSuchElementException ex){
       return false;
     }
+  }
+
+  protected int countOfGroups(By locator) {
+    return wd.findElements(locator).size();
+  }
+
+  protected void findElementByIndex(By locator, int index) {
+    wd.findElements(locator).get(index).click();
+  }
+
+  protected List<WebElement> findElements(By locator) {
+    return wd.findElements(locator);
   }
 }
