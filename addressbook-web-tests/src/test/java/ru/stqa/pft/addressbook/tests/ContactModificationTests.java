@@ -12,7 +12,7 @@ public class ContactModificationTests extends TestBase {
   public void testContactModification(){
     app.getNavigationHelper().gotoHomePage();
     if (!app.getContactHelper().isThereAContact()) {
-      app.getContactHelper().createContact(new ContactData("Natalia", "Bogdan", null, null, null, "[none]"),true);
+      app.getContactHelper().createContact(new ContactData("Natalia", "Bogdan", null, null, null, "[none]"));
     }
     app.getContactHelper().selectContact();
     app.getContactHelper().initContactModification();

@@ -61,9 +61,9 @@ public class ContactHelper extends BaseHelper {
     alertAccept();
   }
 
-  public void createContact(ContactData contactData, boolean b) {
+  public void createContact(ContactData contactData) {
     initContactCreation();
-    fillContactForm(contactData, b);
+    fillContactForm(contactData, true);
     submitContactCreation();
     returnToHomePage();
   }
