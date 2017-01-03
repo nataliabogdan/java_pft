@@ -1,34 +1,14 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-  private  int id;
-  private final String firstName;
-  private final String secondName;
+  private  int id = Integer.MAX_VALUE;
+  private String firstName;
+  private String secondName;
   private String group;
-  private final String address;
-  private final String phone;
-  private final String email;
-
-
-  public ContactData(int id, String firstName, String secondName, String address, String phone, String email, String group) {
-    this.id = id;
-    this.firstName = firstName;
-    this.secondName = secondName;
-    this.address = address;
-    this.phone = phone;
-    this.email = email;
-    this.group = group;
-  }
-
-  public ContactData(String firstName, String secondName, String address, String phone, String email, String group) {
-    this.id = Integer.MAX_VALUE;
-    this.firstName = firstName;
-    this.secondName = secondName;
-    this.address = address;
-    this.phone = phone;
-    this.email = email;
-    this.group = group;
-  }
+  private String address;
+  private String phone;
+  private String email;
+  
 
   public String getFirstName() {
     return firstName;
@@ -52,6 +32,44 @@ public class ContactData {
 
   public String getGroup() {
     return group;
+  }
+  public int getId() {
+    return id;
+  }
+
+  public ContactData withId(int id) {
+    this.id = id;
+    return this;
+  }
+
+  public ContactData withFirstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  public ContactData withSecondName(String secondName) {
+    this.secondName = secondName;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
+  }
+
+  public ContactData withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public ContactData withPhone(String phone) {
+    this.phone = phone;
+    return this;
+  }
+
+  public ContactData withEmail(String email) {
+    this.email = email;
+    return this;
   }
 
   @Override
@@ -82,11 +100,5 @@ public class ContactData {
     return result;
   }
 
-  public int getId() {
-    return id;
-  }
 
-  public void setId(int id) {
-    this.id = id;
-  }
 }
