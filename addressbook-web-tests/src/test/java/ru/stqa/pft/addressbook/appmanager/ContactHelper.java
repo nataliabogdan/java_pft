@@ -64,11 +64,24 @@ public class ContactHelper extends BaseHelper {
     alertAccept();
   }
 
-  public void createContact(ContactData contactData) {
+  public void create(ContactData contactData) {
     initContactCreation();
     fillContactForm(contactData, true);
     submitContactCreation();
     returnToHomePage();
+  }
+
+  public void modify(int index, ContactData contact) {
+    selectContact(index);
+    initContactModification();
+    fillContactForm(contact, false);
+    submitContactModification();
+    returnToHomePage();
+  }
+
+  public void delete(int index) {
+    selectContact(index);
+    deleteSelectedContact();
   }
 
   public boolean isThereAContact() {
@@ -79,7 +92,7 @@ public class ContactHelper extends BaseHelper {
     return countOfCourses(By.name("selected[]"));
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<>();
     List<WebElement> elements = findElements(By.name("entry"));
     for ( WebElement element : elements){
