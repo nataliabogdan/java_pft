@@ -8,7 +8,7 @@ public class ContactData {
   private String address;
   private String phone;
   private String email;
-  
+
 
   public String getFirstName() {
     return firstName;

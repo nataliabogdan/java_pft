@@ -90,6 +90,10 @@ public class BaseHelper {
     return wd.findElements(locator).size();
   }
 
+  protected void findElementByLocator(By locator) {
+    wd.findElement(locator).click();
+  }
+
   protected void findElementByIndex(By locator, int index) {
     wd.findElements(locator).get(index).click();
   }
