@@ -87,8 +87,8 @@ public class ContactHelper extends BaseHelper {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public int getCourseCount() {
-    return countOfCourses(By.name("selected[]"));
+  public int count() {
+    return countOfContacts(By.name("selected[]"));
   }
 
   private Contacts contactCache = null;

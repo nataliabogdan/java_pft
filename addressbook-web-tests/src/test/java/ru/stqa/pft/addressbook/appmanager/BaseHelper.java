@@ -86,7 +86,7 @@ public class BaseHelper {
     return wd.findElements(locator).size();
   }
 
-  protected int countOfCourses(By locator) {
+  protected int countOfContacts(By locator) {
     return wd.findElements(locator).size();
   }
 
