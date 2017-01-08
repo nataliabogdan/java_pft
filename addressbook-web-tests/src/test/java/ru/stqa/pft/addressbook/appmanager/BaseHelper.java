@@ -12,8 +12,8 @@ import java.util.List;
  * Created by plopik on 30.11.2016.
  */
 public class BaseHelper {
-  //public WebDriver wd;
-  private WebDriver wd;
+  public WebDriver wd;
+  //private WebDriver wd;
 
   public BaseHelper(WebDriver wd) {
     this.wd = wd;

@@ -3,10 +3,12 @@ package ru.stqa.pft.addressbook.model;
 public class ContactData {
   private  int id = Integer.MAX_VALUE;
   private String firstName;
-  private String secondName;
+  private String lastName;
   private String group;
   private String address;
-  private String phone;
+  private String homePhone;
+  private String mobilePhone;
+  private String workPhone;
   private String email;
 
 
@@ -14,17 +16,26 @@ public class ContactData {
     return firstName;
   }
 
-  public String getSecondName() {
-    return secondName;
+  public String getLastName() {
+    return lastName;
   }
 
   public String getAddress() {
     return address;
   }
 
-  public String getPhone() {
-    return phone;
+  public String getHomePhone() {
+    return homePhone;
   }
+
+  public String getMobilePhone() {
+    return mobilePhone;
+  }
+
+  public String getWorkPhone() {
+    return workPhone;
+  }
+
 
   public String getEmail() {
     return email;
@@ -47,8 +58,8 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withSecondName(String secondName) {
-    this.secondName = secondName;
+  public ContactData withLastName(String lastName) {
+    this.lastName = lastName;
     return this;
   }
 
@@ -62,8 +73,18 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withPhone(String phone) {
-    this.phone = phone;
+  public ContactData withHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+    return this;
+  }
+
+  public ContactData withMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
+    return this;
+  }
+
+  public ContactData withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
     return this;
   }
 
@@ -77,7 +98,7 @@ public class ContactData {
     return "ContactData{" +
             "id=" + id +
             ", firstName='" + firstName + '\'' +
-            ", secondName='" + secondName + '\'' +
+            ", secondName='" + lastName + '\'' +
             '}';
   }
 
@@ -90,7 +111,7 @@ public class ContactData {
 
     if (id != that.id) return false;
     if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-    return secondName != null ? secondName.equals(that.secondName) : that.secondName == null;
+    return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
 
   }
 
@@ -98,7 +119,7 @@ public class ContactData {
   public int hashCode() {
     int result = id;
     result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-    result = 31 * result + (secondName != null ? secondName.hashCode() : 0);
+    result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
     return result;
   }
 }
