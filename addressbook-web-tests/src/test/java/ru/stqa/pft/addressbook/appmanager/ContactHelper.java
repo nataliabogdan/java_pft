@@ -43,6 +43,18 @@ public class ContactHelper extends BaseHelper {
     }
   }
 
+  public void fillContactFormShort(ContactData contactData) {
+    type(By.name("firstname"), contactData.getFirstName());
+    type(By.name("lastname"), contactData.getLastName());
+    type(By.name("address"), contactData.getAddress());
+    type(By.name("home"), contactData.getHomePhone());
+    type(By.name("mobile"), contactData.getMobilePhone());
+    type(By.name("work"), contactData.getWorkPhone());
+    type(By.name("email"), contactData.getEmail());
+    type(By.name("email2"), contactData.getEmail2());
+    type(By.name("email3"), contactData.getEmail3());
+  }
+
   public void initContactCreation() {
     click(By.linkText("add new"));
   }
@@ -67,6 +79,14 @@ public class ContactHelper extends BaseHelper {
   public void create(ContactData contactData) {
     initContactCreation();
     fillContactForm(contactData, true);
+    submitContactCreation();
+    contactCache = null;
+    returnToHomePage();
+  }
+
+  public void createShort(ContactData contactData) {
+    initContactCreation();
+    fillContactFormShort(contactData);
     submitContactCreation();
     contactCache = null;
     returnToHomePage();
@@ -152,10 +172,18 @@ public class ContactHelper extends BaseHelper {
     WebElement row = checkbox.findElement(By.xpath("./../.."));
     List<WebElement> cells = row.findElements(By.tagName("td"));
     cells.get(7).findElement(By.tagName("a")).click();
+  }
 
 
     //wd.findElement(By.xpath(String.format("//input[@value='%s']/../../td[8]/a", id))).click();
     //wd.findElement(By.xpath(String.format("//tr[.//input[@value='%s']]/td[8]/a", id))).click();
     //wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+  
+
+  public ContactData detailedInfoForm(ContactData contact) {
+    click(By.cssSelector(String.format("a[href='view.php?id=%s']",contact.getId())));
+    String detailedInfo = wd.findElement(By.id("content")).getText();
+    wd.navigate().back();
+    return new ContactData().withId(contact.getId()).withDetailedInfo(detailedInfo);
   }
 }
