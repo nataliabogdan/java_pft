@@ -36,6 +36,7 @@ public class ContactHelper extends BaseHelper {
     type(By.name("email"), contactData.getEmail());
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
+    attach(By.name("photo"), contactData.getPhoto());
     if (creation){
       select(By.name("new_group"),contactData.getGroup());
     } else {
@@ -178,7 +179,7 @@ public class ContactHelper extends BaseHelper {
     //wd.findElement(By.xpath(String.format("//input[@value='%s']/../../td[8]/a", id))).click();
     //wd.findElement(By.xpath(String.format("//tr[.//input[@value='%s']]/td[8]/a", id))).click();
     //wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
-  
+
 
   public ContactData detailedInfoForm(ContactData contact) {
     click(By.cssSelector(String.format("a[href='view.php?id=%s']",contact.getId())));
