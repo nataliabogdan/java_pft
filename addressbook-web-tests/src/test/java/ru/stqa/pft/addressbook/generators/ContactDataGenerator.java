@@ -82,7 +82,7 @@ public class ContactDataGenerator {
     List<ContactData> contacts = new ArrayList<ContactData>();
     for (int i = 0; i < count; i++) {
       contacts.add(new ContactData().withFirstName(String.format("firstname %s", i))
-              .withLastName(String.format("lastname %s", i)).withAddress(String.format("address %s", i)));
+              .withLastName(String.format("lastname %s", i)).withAddress(String.format("address\n %s", i)));
     }
     return contacts;
   }

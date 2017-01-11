@@ -56,6 +56,13 @@ public class ContactHelper extends BaseHelper {
     type(By.name("email3"), contactData.getEmail3());
   }
 
+  public void fillContactFormSmall(ContactData contactData) {
+    type(By.name("firstname"), contactData.getFirstName());
+    type(By.name("lastname"), contactData.getLastName());
+    type(By.name("address"), contactData.getAddress());
+  }
+
+
   public void initContactCreation() {
     click(By.linkText("add new"));
   }
@@ -93,6 +100,14 @@ public class ContactHelper extends BaseHelper {
     returnToHomePage();
   }
 
+  public void createSmall(ContactData contactData) {
+    initContactCreation();
+    fillContactFormSmall(contactData);
+    submitContactCreation();
+    contactCache = null;
+    returnToHomePage();
+  }
+
   public void modify(ContactData contact) {
     selectContactById(contact.getId());
     initContactModification();
@@ -122,14 +137,17 @@ public class ContactHelper extends BaseHelper {
     if (contactCache != null){
       return new Contacts(contactCache);
     }
-
     contactCache = new Contacts();
-    List<WebElement> elements = findElements(By.name("entry"));
-    for ( WebElement element : elements){
-      String firstname = element.getText().split(" ")[1];
-      String lastname = element.getText().split(" ")[0];
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contactCache.add(new ContactData().withId(id).withFirstName(firstname).withLastName(lastname));
+    List<WebElement> rows= wd.findElements(By.cssSelector("tr[name=\"entry\"]"));
+    for(WebElement row : rows){
+      List<WebElement> cells = row.findElements(By.tagName("td"));
+      int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+      String lastname = cells.get(1).getText();
+      String firstname = cells.get(2).getText();
+      String address = cells.get(3).getText();
+      String allEmails = cells.get(4).getText();
+      String allPhones = cells.get(5).getText();
+      contactCache.add(new ContactData().withId(id).withFirstName(firstname).withLastName(lastname).withAddress(address).withAllEmails(allEmails).withAllPhones(allPhones));
     }
     return new Contacts(contactCache);
   }
